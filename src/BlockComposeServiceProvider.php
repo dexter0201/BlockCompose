@@ -1,8 +1,8 @@
 <?php
 
-namespace DW\BlockCompose;
+namespace Dexter\BlockCompose;
 
-use DW\BlockCompose\BaseServiceProvider;
+use Dexter\BlockCompose\BaseServiceProvider;
 
 use function Roots\asset;
 use function Roots\config;

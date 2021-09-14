@@ -1,12 +1,12 @@
 <?php
 
-namespace DW\BlockCompose;
+namespace Dexter\BlockCompose;
 
 use function Roots\app;
 use function Roots\view;
 use function Roots\config;
 
-use DW\BlockCompose\Traits\Compose;
+use Dexter\BlockCompose\Traits\Compose;
 
 /**
  * Block Composer

@@ -2,7 +2,7 @@
 
 namespace App\Blocks;
 
-use DW\BlockCompose\Composer;
+use Dexter\BlockCompose\Composer;
 
 class Card extends Composer
 {

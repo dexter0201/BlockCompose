@@ -1,6 +1,6 @@
 <?php
 
-namespace DW\BlockCompose;
+namespace Dexter\BlockCompose;
 
 use function Roots\config;
 use Roots\Acorn\ServiceProvider;

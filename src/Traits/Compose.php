@@ -1,6 +1,6 @@
 <?php
 
-namespace DW\BlockCompose\Traits;
+namespace Dexter\BlockCompose\Traits;
 
 trait Compose
 {

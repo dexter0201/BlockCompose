@@ -1,5 +1,5 @@
 {
-  "name": "dw/block-compose",
+  "name": "dexw/block-compose",
   "type": "library",
   "license": "MIT",
   "description": "Compose views using WordPress blocks folked from tiny-pixel/block-compose",
@@ -17,7 +17,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "DW\\BlockCompose\\": "src/"
+      "DEXW\\BlockCompose\\": "src/"
     }
   },
   "require": {

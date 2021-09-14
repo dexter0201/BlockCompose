@@ -1,6 +1,6 @@
 <?php
 
-namespace DW\BlockCompose;
+namespace Dexter\BlockCompose;
 
 /**
  * Attribute
