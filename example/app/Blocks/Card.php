@@ -2,7 +2,7 @@
 
 namespace App\Blocks;
 
-use \TinyPixel\BlockCompose\Composer;
+use DW\BlockCompose\Composer;
 
 class Card extends Composer
 {

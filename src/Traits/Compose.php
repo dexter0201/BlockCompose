@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\BlockCompose\Traits;
+namespace DW\BlockCompose\Traits;
 
 trait Compose
 {

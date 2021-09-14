@@ -1,9 +1,9 @@
 <?php
 
-namespace TinyPixel\BlockCompose;
+namespace DW\BlockCompose;
 
-use function \Roots\config;
-use \Roots\Acorn\ServiceProvider;
+use function Roots\config;
+use Roots\Acorn\ServiceProvider;
 
 class BaseServiceProvider extends ServiceProvider
 {
@@ -23,11 +23,11 @@ class BaseServiceProvider extends ServiceProvider
     {
         $this->bound = collect();
 
-        collect(glob($this->app->basePath('app/'. $dir . '/*.php')))->map(
+        collect(glob($this->app->basePath('app/' . $dir . '/*.php')))->map(
             function ($file) use ($dir) {
                 $src = $this->formatBindings($dir, $file);
                 $this->app->bind($src->handle, function () use ($src) {
-                    return new $src->class;
+                    return new $src->class();
                 });
 
                 $this->bound->push($src->handle);
@@ -46,8 +46,9 @@ class BaseServiceProvider extends ServiceProvider
     public function formatBindings($class, $file)
     {
         return (object) [
-            'handle' => strtolower($class).'.'.strtolower(basename($file, '.php')),
-            'class' => '\\App\\'.$class.'\\'. basename($file, '.php'),
+            'handle' =>
+                strtolower($class) . '.' . strtolower(basename($file, '.php')),
+            'class' => '\\App\\' . $class . '\\' . basename($file, '.php'),
         ];
     }
 

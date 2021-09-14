@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\BlockCompose;
+namespace DW\BlockCompose;
 
 /**
  * Attribute

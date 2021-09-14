@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\BlockCompose;
+namespace DW\BlockCompose;
 
 use function Roots\app;
 use function Roots\view;
 use function Roots\config;
 
-use \TinyPixel\BlockCompose\Traits\Compose;
+use DW\BlockCompose\Traits\Compose;
 
 /**
  * Block Composer
@@ -35,13 +35,15 @@ class Composer
 
         add_action('init', function () {
             register_block_type($this->name, [
-                'script'          => isset($this->script) ?: null,
-                'style'           => isset($this->style) ?: null,
-                'editor_style'    => isset($this->editor_style) ?: null,
-                'editor_script'   => $this->editor_script,
+                'script' => isset($this->script) ?: null,
+                'style' => isset($this->style) ?: null,
+                'editor_style' => isset($this->editor_style) ?: null,
+                'editor_script' => $this->editor_script,
                 'render_callback' => function ($attributes, $content) {
-                    return view($this->view, ['block' => $this->yieldViewData($attributes, $content)]);
-                }
+                    return view($this->view, [
+                        'block' => $this->yieldViewData($attributes, $content),
+                    ]);
+                },
             ]);
         });
     }
@@ -54,11 +56,13 @@ class Composer
      */
     public function yieldViewData($attributes, $content)
     {
-        return (object)$this->with(collect([
-            'name'       => $this->name,
-            'content'    => $content,
-            'attributes' => (object) $attributes,
-        ])->toArray());
+        return (object) $this->with(
+            collect([
+                'name' => $this->name,
+                'content' => $content,
+                'attributes' => (object) $attributes,
+            ])->toArray()
+        );
     }
 
     /**
@@ -70,11 +74,16 @@ class Composer
      */
     public function renderBlock()
     {
-        add_filter('render_block', function ($block_content, $block) {
-            $data = $this->withContent($block_content);
+        add_filter(
+            'render_block',
+            function ($block_content, $block) {
+                $data = $this->withContent($block_content);
 
-            return $data;
-        }, 10, 2);
+                return $data;
+            },
+            10,
+            2
+        );
     }
 
     /**
@@ -86,13 +95,18 @@ class Composer
      */
     public function renderBlockData()
     {
-        add_filter('render_block_data', function ($block, $source_block) {
-            $block['attrs']['name'] = $source_block['blockName'];
-            $block['attrs']['source'] = $source_block;
+        add_filter(
+            'render_block_data',
+            function ($block, $source_block) {
+                $block['attrs']['name'] = $source_block['blockName'];
+                $block['attrs']['source'] = $source_block;
 
-            /** Consumer dev hook */
-            return $this->withData($block, $source_block);
-        }, 10, 2);
+                /** Consumer dev hook */
+                return $this->withData($block, $source_block);
+            },
+            10,
+            2
+        );
     }
 
     use Compose;
